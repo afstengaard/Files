@@ -1,0 +1,3 @@
+Egon,1200
+Benny,3000
+Kjeld,1000
