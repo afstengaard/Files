@@ -9,8 +9,12 @@ public class Customer {
 
     }
 
-    public void deposit(int amount){
+    @Override
+    public String toString() {
+        return  name + ": " + balance;
+    }
 
+    public void deposit(int amount){
         this.balance += amount;
 
     }
