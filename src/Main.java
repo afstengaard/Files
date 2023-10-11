@@ -11,8 +11,6 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Customer> customers = new ArrayList<>();
-
-
         //instantier File
         File file = new File("src/customer.txt");
 
@@ -23,22 +21,23 @@ public class Main {
                 String s = scan.nextLine();// Hele linjen vil stå i én string   ==>  "Egon, 200"
                 String [] row = s.split(","); // s splittes to strings ==>  "Egon", "200"
                 String name = row[0];      // ==> "Egon"
-                int balance = Integer.parseInt(row[1]); // Konverterer string til int "200" ==> 200
+                int balance = Integer.parseInt(row[1].trim()); // Konverterer string til int "200" ==> 200
                 Customer c = new Customer(name, balance); //bruger de indlæste værdier til at konstruere et kundeobjekt (instansiering)
                 customers.add(c); // placerer objektet i listen med kunder
             }
         }catch (FileNotFoundException e){
             System.out.println("file not found");
         }
-
-        //Lidt manipulation med nogle af de objekter vi lige har lavet
-        System.out.println("Tilstand ved indlæsning af data: ");
         printCustomers(customers);
-        //sidste kunde får 2000 kr
+        //Lidt manipulation med nogle af de objekter vi lige har lavet
+
+        System.out.println("Første kunde får 1000kr");
+        customers.get(0).deposit(1000);
+
+        System.out.println("\n Sidste kunde får 2000 kr");
         Customer lastCustomer = customers.get(customers.size()-1);
         lastCustomer.deposit(2000);
-        //første kunde får 1000kr
-        customers.get(0).deposit(1000);
+
         System.out.println("\n Ny tilstand efter manipulation: ");
         printCustomers(customers);
 
