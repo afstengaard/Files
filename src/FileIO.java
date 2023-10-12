@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class FileIO {
 
-       public ArrayList<Customer> readCustomerData(String path) {
-        ArrayList<Customer> customers = new ArrayList<>();
+       public ArrayList<Player> readPlayerData(String path) {
+        ArrayList<Player> players = new ArrayList<>();
         //instantier File
         File file = new File(path);
 
@@ -20,24 +20,24 @@ public class FileIO {
                 String[] row = s.split(",");// s splittes to strings ==>  "Egon", "200"
                 String name = row[0];      // ==> "Egon"
                 int balance = Integer.parseInt(row[1].trim()); // Konverterer string til int "200" ==> 200
-                Customer c = new Customer(name, balance); //bruger de indlæste værdier til at konstruere et kundeobjekt (instansiering)customers.add(c);
+                Player c = new Player(name, balance); //bruger de indlæste værdier til at konstruere et kundeobjekt (instansiering)customers.add(c);
                 // placerer objektet i listen med kunder
-                customers.add(c);
+                players.add(c);
             }
         } catch (FileNotFoundException e) {
             System.out.println("file not found");
         }
 
-        return customers;
+        return players;
     }
 
-    public void saveCustomerData(ArrayList<Customer> customers){
+    public void savePlayerData(ArrayList<Player> players){
      try
 
     {
         FileWriter writer = new FileWriter("src/customer.txt");
         writer.write("Name,Balance" + "\n");
-        for (Customer c : customers) {
+        for (Player c : players) {
             String textTosave = c.name + "," + c.balance;
             writer.write(textTosave + "\n");//Egon,5200
         }

@@ -1,12 +1,10 @@
-public class Customer {
+public class Player {
     String name;
     int balance;
 
-    public Customer(String name, int balance){
-
+    public Player(String name, int balance){
         this.name = name;
         this.balance = balance;
-
     }
 
     @Override

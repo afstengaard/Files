@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+class FileIO
+class Player
+class Main
+
+Main *-- Player
+Main *-- FileIO
+
+class Main{
+- static ArrayList<Player> players
+- static FileIO io
++ static void main(String[] args)
+- static displayPlayers()
+}
+
+
+
+class FileIO {
+- Scanner scan
++ ArrayList<Player> readPlayerData(String path)
++ void savePlayerData(ArrayList<Player> players)
+}
+
+class Player{
+- String name
+- int balance
++ boolean buyProperty(int amount)
++ boolean payRent(int amount, Player receiver)
++ String getName()
++ int getBalance()
+}
+
+@enduml
