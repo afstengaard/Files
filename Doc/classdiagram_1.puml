@@ -25,10 +25,12 @@ class FileIO {
 class Player{
 - String name
 - int balance
++ Player(String, int)
 + boolean buyProperty(int amount)
 + boolean payRent(int amount, Player receiver)
 + String getName()
 + int getBalance()
++ void setBalance(int amount)
 }
 
 @enduml
