@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        //instantier File
+        //Læse data
         File file = new File("src/customer.txt");
 
         try {
