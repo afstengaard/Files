@@ -1,6 +1,6 @@
 Name,Balance
-Egon,1000
+Egon,2000
 Benny,0
 Kjeld,0
 Yvonne,0
-Børge,2000
+Børge,4000

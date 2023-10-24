@@ -5,23 +5,25 @@ public class Main {
     private static ArrayList<Player> players = new ArrayList<>();
     public static void main(String[] args) {
 
-        //instantier File
+        //Læse data ind
         FileIO io = new FileIO();
         ArrayList<String> data = io.readPlayerData("src/data.txt");
         for (String s:data) {
-            String [] row = s.split(","); // s splittes to strings ==>  "Egon", "200"
-            String name = row[0];      // ==> "Egon"
-            int balance = Integer.parseInt(row[1].trim()); // Konverterer string til int "200" ==> 200
-            Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et kundeobjekt (instansiering)
-            players.add(p); // placerer objektet i listen med kunder
+            String [] row = s.split(",");              // s splittes to strings ==>  "Egon", "200"
+
+            String name = row[0];                           // ==> "Egon"
+            int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
+
+            Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
+            players.add(p);                       // placerer objektet i listen med kunder
         }
         testCode();
 
-       //Nu skal vi gemme de ændringer der er sket (data persistence)
+        //Gemme ændringer (data persistence)
         io.savePlayerData(players);
     }
     private static void testCode() {
-        /* Denne foretager nogle ændringer i player objekterne
+        /* Denne kode foretager nogle ændringer i player objekterne for at teste at data bliver gemt korrekt
         Første player får 1000kr
         Sidste player får 2000 kr
          */
