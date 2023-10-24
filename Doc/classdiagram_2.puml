@@ -16,44 +16,37 @@ Main *-- Game
 Game *-- TextUI
 Game *-- FileIO
 Game *-- Player
-Player *-- Account
+
 
 Main : + static void main(string [] args)
 
-'Player  : -{static} int counter
-'Player : -int id
-Player  : -String name
-'todo: indkapsling af balance-felt i ny Account klasse (klip fra: https://github.com/Dat1Cphbusiness/ToyBank/blob/main/src/Account.java )
-Player  : -Account account
-Player  : +Player(String name)
-Player  : +int getId()
-Player  : +String getName()
-Player  : +String toString()
-Player  : +int getBalance()
+Player  : - String name
+Player  : - int balance
+Player  : + Player(String, int)
+Player  : + String toString()
+Player  : + int deposit()
 
-Account : - int balance
-Account : + Account()
-Account : + int getBalance()
-Account : + void setBalance(int amount)
-Account : + void updateBalance(int amount)
 
+
+'todo - Game: add new controller class as substitute for Main, let Main instantiate this class
 Game : - ArrayList<Player> players
 Game : - int maxPlayers
 Game : - TextUI ui
 Game : - FileIO io
 Game : + Game(int maxPlayers)
-Game : + void registerPlayer(String name, int amount)
-Game : + void setup()
-Game : - void endGame()
-Game : + void displayPlayers()
-Game : + Player getPlayer(int i)
-Game : + ArrayList<Player> getPlayers()
 
+Game : + void setup()
+Game : + void registerPlayer(String name, int amount)
+Game : + void displayPlayers()
+Game : + void endGame()
+
+
+'todo - TextUI: copy  from drinksmenu (https://github.com/Dat1Cphbusiness/DrinksMenu/blob/main/TextUI.java)
 TextUI : + String getInput(String msg)
 TextUI : - Scanner scanner
 
 
-FileIO : - Scanner scan
+FileIO : - Scanner scanner
 FileIO : + ArrayList<Player> readPlayerData(String path)
 FileIO : + void savePlayerData(ArrayList<Player> players)
 

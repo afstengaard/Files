@@ -16,21 +16,18 @@ class Main{
 
 
 
-class FileIO {
-- Scanner scan
-+ ArrayList<Player> readPlayerData(String path)
-+ void savePlayerData(ArrayList<Player> players)
-}
 
-class Player{
-- String name
-- int balance
-+ Player(String, int)
-+ boolean buyProperty(int amount)
-+ boolean payRent(int amount, Player receiver)
-+ String getName()
-+ int getBalance()
-+ void setBalance(int amount)
-}
+ FileIO : - Scanner scan
+ FileIO : + ArrayList<Player> readPlayerData(String path)
+ FileIO : + void savePlayerData(ArrayList<Player> players)
+
+
+
+Player  : - String name
+Player  : - int balance
+Player  : + Player(String, int)
+Player  : + String toString()
+Player  : + int deposit()
+
 
 @enduml
