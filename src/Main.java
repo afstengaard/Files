@@ -46,6 +46,10 @@ public class Main {
     }
 
     private static void testCode() {
+        /* Denne kode foretager nogle ændringer i player objekterne for at teste at data bliver gemt korrekt
+        Første player får 1000kr
+        Sidste player får 2000 kr
+         */
 
         printCustomers(customers);
         //Lidt manipulation med nogle af de objekter vi lige har lavet
