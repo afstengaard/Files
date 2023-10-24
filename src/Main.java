@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
+    public static ArrayList<Customer> customers = new ArrayList<>();
     public static void main(String[] args) {
 
-        ArrayList<Customer> customers = new ArrayList<>();
+
         //instantier File
         File file = new File("src/customer.txt");
 
@@ -28,6 +28,25 @@ public class Main {
         }catch (FileNotFoundException e){
             System.out.println("file not found");
         }
+        //Test koden
+        testCode();
+
+       //Gemme ændringer  (data persistence)
+        try{
+            FileWriter writer = new FileWriter("src/customer.txt");
+            writer.write("Name,Balance"+"\n");
+            for (Customer c:customers) {
+                String textTosave = c.name +","+c.balance;
+                writer.write(textTosave+"\n");//Egon,5200
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("noget gik galt ved skrivning til fil");
+        }
+    }
+
+    private static void testCode() {
+
         printCustomers(customers);
         //Lidt manipulation med nogle af de objekter vi lige har lavet
 
@@ -40,19 +59,6 @@ public class Main {
 
         System.out.println("\n Ny tilstand efter manipulation: ");
         printCustomers(customers);
-
-       //Nu skal vi gemme de ændringer der er sket (data persistence)
-        try{
-            FileWriter writer = new FileWriter("src/customer.txt");
-            writer.write("Name,Balance"+"\n");
-            for (Customer c:customers) {
-                String textTosave = c.name +","+c.balance;
-                writer.write(textTosave+"\n");//Egon,5200
-            }
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("noget gik galt ved skrivning til fil");
-        }
     }
 
     private static void printCustomers(ArrayList<Customer> list) {
