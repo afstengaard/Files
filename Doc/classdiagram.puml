@@ -9,13 +9,15 @@ class Customer
 
 
 class Main{
+-ArrayList<Customer> customers
 + static void main(Strin[] args)
-+ static void printCustomers(ArrayList<Customer> list)
++ static void printCustomers()
++ static void testCode()
 }
 class Customer{
-String name
-int balance
-Customer(String name, int balance)
+- String name
+- int balance
++ Customer(String name, int balance)
 + String toString()
 + void deposit()
 }

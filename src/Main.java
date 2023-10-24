@@ -1,4 +1,4 @@
-import javax.swing.text.DefaultEditorKit;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -36,7 +36,7 @@ public class Main {
             FileWriter writer = new FileWriter("src/customer.txt");
             writer.write("Name,Balance"+"\n");
             for (Customer c:customers) {
-                String textTosave = c.name +","+c.balance;
+                String textTosave = c.getName() +","+c.getBalance();
                 writer.write(textTosave+"\n");//Egon,5200
             }
             writer.close();

@@ -1,6 +1,6 @@
 public class Customer {
-    String name;
-    int balance;
+    private String name;
+    private int balance;
 
     public Customer(String name, int balance){
 
@@ -17,5 +17,11 @@ public class Customer {
     public void deposit(int amount){
         this.balance += amount;
 
+    }
+    public String getName() {
+        return this.name;
+    }
+    public int getBalance() {
+        return this.balance;
     }
 }
