@@ -8,14 +8,16 @@ public class Main {
         //Læse data ind
         FileIO io = new FileIO();
         ArrayList<String> data = io.readPlayerData("src/data.txt");
-        for (String s:data) {
-            String [] row = s.split(",");              // s splittes to strings ==>  "Egon", "200"
+        if(data.size()>0) {
+            for (String s : data) {
+                String[] row = s.split(",");              // s splittes to strings ==>  "Egon", "200"
 
-            String name = row[0];                           // ==> "Egon"
-            int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
+                String name = row[0];                           // ==> "Egon"
+                int balance = Integer.parseInt(row[1].trim());  // Konverterer string til int "200" ==> 200
 
-            Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
-            players.add(p);                       // placerer objektet i listen med kunder
+                Player p = new Player(name, balance); //bruger de indlæste værdier til at konstruere et player objekt (instansiering)
+                players.add(p);                       // placerer objektet i listen med kunder
+            }
         }
         testCode();
 
