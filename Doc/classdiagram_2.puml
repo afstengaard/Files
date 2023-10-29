@@ -1,15 +1,18 @@
 @startuml
 'USER DIALOG AND CONTROLLER CLASS
 
-class Main
-class Game
 
+
+'Relations
 
 Main *-- Game
 Game *-- TextUI
 Game *-- FileIO
 Game *-- Player
 
+
+
+'Fields and methods
 
 Main : + static void main(string [] args)
 
