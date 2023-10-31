@@ -7,42 +7,40 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static ArrayList<Customer> customers = new ArrayList<>();
+    //                              referencen   objektet
+    public static ArrayList<Player> players = new ArrayList<>();
     public static void main(String[] args) {
-
-
         //Læse data
-        File file = new File("src/customer.txt");
+       FileIO io = new FileIO();
 
-        try {
-            Scanner scan = new Scanner(file);
-            scan.nextLine(); //Skip header
-            while(scan.hasNextLine()){
-                String s = scan.nextLine();// Hele linjen vil stå i én string   ==>  "Egon, 200"
-                String [] row = s.split(","); // s splittes to strings ==>  "Egon", "200"
+       ArrayList<String> data;
+       data =  io.readPlayerData("src/data.txt");
+
+       if(data.size()>0){
+
+           for (String s:data) {
+              String[] row = s.split(",");
                 String name = row[0];      // ==> "Egon"
                 int balance = Integer.parseInt(row[1].trim()); // Konverterer string til int "200" ==> 200
-                Customer c = new Customer(name, balance); //bruger de indlæste værdier til at konstruere et kundeobjekt (instansiering)
-                customers.add(c); // placerer objektet i listen med kunder
-            }
-        }catch (FileNotFoundException e){
-            System.out.println("file not found");
+                Player c = new Player(name, balance); //bruger de indlæste værdier til at konstruere et kundeobjekt (instansiering)
+                players.add(c); // placerer objektet i listen med kunder
+
+
+           }
+
+
+
+
+
         }
+
+
+
         //Test koden
         testCode();
+       //Gem data
+        io.savePlayerData(players);
 
-       //Gemme ændringer  (data persistence)
-        try{
-            FileWriter writer = new FileWriter("src/customer.txt");
-            writer.write("Name,Balance"+"\n");
-            for (Customer c:customers) {
-                String textTosave = c.getName() +","+c.getBalance();
-                writer.write(textTosave+"\n");//Egon,5200
-            }
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("noget gik galt ved skrivning til fil");
-        }
     }
 
     private static void testCode() {
@@ -51,23 +49,23 @@ public class Main {
         Sidste player får 2000 kr
          */
 
-        printCustomers(customers);
+
         //Lidt manipulation med nogle af de objekter vi lige har lavet
 
-        System.out.println("Første kunde får 1000kr");
-        customers.get(0).deposit(1000);
+        System.out.println("Første spiller får 1000kr");
+        players.get(0).deposit(1000);
 
-        System.out.println("\n Sidste kunde får 2000 kr");
-        Customer lastCustomer = customers.get(customers.size()-1);
+        System.out.println("\n Sidste spiller får 2000 kr");
+        Player lastCustomer = players.get(players.size()-1);
         lastCustomer.deposit(2000);
 
         System.out.println("\n Ny tilstand efter manipulation: ");
-        printCustomers(customers);
+        displayPlayers();
     }
 
-    private static void printCustomers(ArrayList<Customer> list) {
-        for (Customer c:list) {
-            System.out.println(c);
+    private static void displayPlayers() {
+        for (Player p:players) {
+            System.out.println(p);
         }
     }
 }

@@ -1,8 +1,8 @@
-public class Customer {
+public class Player {
     private String name;
     private int balance;
 
-    public Customer(String name, int balance){
+    public Player(String name, int balance){
 
         this.name = name;
         this.balance = balance;
@@ -18,10 +18,12 @@ public class Customer {
         this.balance += amount;
 
     }
+
     public String getName() {
-        return this.name;
+        return name;
     }
+
     public int getBalance() {
-        return this.balance;
+        return balance;
     }
 }
