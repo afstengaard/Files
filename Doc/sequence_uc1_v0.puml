@@ -6,9 +6,27 @@ Participant FileIO
 Participant TextUI
 Participant Player
 
-
 Main -> Game: new()
 Main -> Game: setup()
+Game -> FileIO: new()
+Game -> FileIO: readPlayerData()
+FileIO --> Game: data
+
+alt data.size()>0
+loop (for-each)
+Game -> Player: new()
+end
+
+else
+Game -> TextUI: new
+
+loop (while)
+Game -> TextUI: getInput()
+Game -> Player: new()
+end
+
+end
+
 
 '... følg metodekaldene i Game.setup og tegn dem ind som vandrette streger
 ' returnering af værdier fra en metode *kan* vises med en stiplet pil: <--
@@ -16,4 +34,5 @@ Main -> Game: setup()
 ' brug loop til at vise gentagelser
 
 Game -> Game : displayPlayers();
+
 @enduml

@@ -1,4 +1,1 @@
-Name,Balance
-Egon,1200
-Benny,3009
-Kjeld,2300
+Name, Balance
