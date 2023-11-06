@@ -9,11 +9,35 @@ Participant Player
 
 Main -> Game: new()
 Main -> Game: setup()
+Game -> FileIO: new()
+Game -> FileIO: readPlayerData()
+FileIO --> Game: data
+alt data.size()>0
+    Game -> TextUI: getInput()
+    TextUI --> Game: input
+    alt input y
+        loop dataSize
+            Game -> Player: new()
+        end
+    else input n
+        loop maxPlayers
+            Game -> TextUI: getInput()
+            TextUI --> Game: name
+            Game -> Player: new()
+        end
+    end
+else dataSize <= 0
+    loop maxPlayers
+        Game -> TextUI: getInput()
+        TextUI --> Game: name
+        Game -> Player: new()
+    end
+end
 
 '... følg metodekaldene i Game.setup og tegn dem ind som vandrette streger
 ' returnering af værdier fra en metode *kan* vises med en stiplet pil: <--
 ' brug alt-else-end til at vise betingelser
 ' brug loop til at vise gentagelser
 
-Game -> Game : displayPlayers();
+
 @enduml
